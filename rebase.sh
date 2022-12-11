@@ -126,7 +126,7 @@ rebase() {
 ask_push() {
     if [ "$rebased_branches" != "" ];
     then 
-        gum confirm "Push $rebased_branches to origin ?" && 
+        gum confirm "$(color_text $BLUE "Push $rebased_branches to origin ?") " && 
         for b in $rebased_branches
         do 
             git checkout "$b" && git push --force-with-lease --no-verify
