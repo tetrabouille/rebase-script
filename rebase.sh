@@ -33,6 +33,7 @@ get_branch() {
 }
 
 wait_for_conflicts() {
+    conflict_resolved="no"
     conflict=$(git rebase --show-current-patch)
     while [ "$conflict" != "" ];
     do
@@ -43,7 +44,6 @@ wait_for_conflicts() {
         then 
             git rebase --abort
             conflict_resolved="aborted"
-        else conflict_resolved="no"
         fi
         conflict=$(git rebase --show-current-patch)
     done
